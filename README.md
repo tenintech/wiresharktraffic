@@ -124,7 +124,9 @@ Create Inbound Security Rule --> Deny ICMPv4 --> Make priority --> Click Add
    
 <img width="667" height="268" alt="requestnoreply" src="https://github.com/user-attachments/assets/63ac5131-17aa-4e76-b220-a0a6a8d4f06d" />
 
-4. Delete Rule and observe traffic again. 
+
+
+3. Delete Rule and observe traffic again. 
 
 <img width="519" height="169" alt="deleterule" src="https://github.com/user-attachments/assets/94433d3d-5843-49f7-8232-7fdbe3e02cf6" />
 <img width="634" height="173" alt="requestreplyping" src="https://github.com/user-attachments/assets/a418cf7e-30cc-4d7b-a30a-8679cf8c4ffb" />
