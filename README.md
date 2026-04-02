@@ -17,6 +17,8 @@ The goal is to test connectivity and observe how different network ports and pro
   - Remote Desktop (RDP)
   
   - Wireshark Network Analyzer
+  
+  - Windows Powershell
 
 
 ---
