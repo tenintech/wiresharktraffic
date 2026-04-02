@@ -62,11 +62,11 @@ Live capture in progress.
   - **tcp.port == 443**
 
 This shows HTTPS traffic between the VM and the website.
-Googles DNS 8.8.8.8 was visible in the capture.
+
+Google's DNS (8.8.8.8) was visible in the capture.
+
 <img width="905" height="484" alt="filterportcapture443" src="https://github.com/user-attachments/assets/bc03c151-08bd-4b50-8840-9abc200090a0" />
 
-
-Filtered HTTPS traffic.
 
 ---
 
@@ -74,18 +74,21 @@ Filtered HTTPS traffic.
 
 Since the VM is accessed through Remote Desktop, used Wireshark to observe RDP communication.
 
-1. Apply this filter in Wireshark:
+1. Applied this filter in Wireshark:
 
  - **tcp.port == 3389**
 
-This displays traffic used for Remote Desktop connections. My public IP address is visible in the capture.
+This displays traffic used for Remote Desktop connections. 
+
+My public IP address is visible in the capture.
+
 <img width="940" height="479" alt="filter3389" src="https://github.com/user-attachments/assets/709af4af-1005-44a1-ae92-86931480784e" />
 
 RDP packets in Wireshark.
 
 ---
 
-  ## 5.Test Connectivity Using Ping
+  ## 5. Test Connectivity Using Ping
 
 1. Applied this filter in Wireshark:
 
@@ -93,14 +96,14 @@ RDP packets in Wireshark.
 
 2. Opened Windows Powershell inside the VM.
 
-3. Run command ping to verify Internet Control Message Protocol (ICMP) traffic 
+3. Ran command "ping" to verify Internet Control Message Protocol (ICMP) traffic. 
 
-   - Run the following command:
+   - Command:
    **ping 10.0.0.5**(private IP address of 2nd VM on network)
 
 <img width="901" height="437" alt="icmptraffic" src="https://github.com/user-attachments/assets/62542d45-7989-4394-8498-70088e6118d6" />
 
-This shows the ping request and reply process of the ICMP packets. 
+This shows the ping 'request' and 'reply' process of the ICMP packets. 
 
 
 ---
@@ -115,21 +118,22 @@ Create Inbound Security Rule --> Deny ICMPv4 --> Make priority --> Click Add
 
 <img width="862" height="398" alt="denyicmptraffic" src="https://github.com/user-attachments/assets/06289c46-277d-46c0-b93d-8337265baacb" />
 
-2. Return to Wireshark and observe traffic. Observed only requests with no reply indicating that the rule was deployed successfully. 
+2. Return to Wireshark and observe traffic. Observed only 'requests' with no 'reply', indicating that the rule was deployed successfully.
+   
 <img width="667" height="268" alt="requestnoreply" src="https://github.com/user-attachments/assets/63ac5131-17aa-4e76-b220-a0a6a8d4f06d" />
 
-3. Delete Rule and observe traffic again. 
+4. Delete Rule and observe traffic again. 
 
 <img width="519" height="169" alt="deleterule" src="https://github.com/user-attachments/assets/94433d3d-5843-49f7-8232-7fdbe3e02cf6" />
 <img width="634" height="173" alt="requestreplyping" src="https://github.com/user-attachments/assets/a418cf7e-30cc-4d7b-a30a-8679cf8c4ffb" />
 
 
-Once ICMP is allowed again the ping request and replies are visible.
+Once ICMP is allowed again the ping 'requests' and 'replies' are visible.
 
 
 
 ## 💡 What I Learned 
-This project helped with basic Network Awareness. Observing trafficTThis project of network traffic analysis helped me understand the communication between different machines on a network. Protocol Identification became much more clear as I filtered packets by port and protocol and observed the capture of specific types of traffic. A tool like Wireshark can help you with connectivity troubleshooting and basic Network Security Awareness. 
+Observing traffic in this project of network traffic analysis helped me better understand the communication between different machines on a network. Protocol Identification became much more clear as I filtered packets by port and protocol and observed the capture of different types of traffic. A tool like Wireshark can help you with connectivity troubleshooting and basic Network Security Awareness. 
 
   
 
