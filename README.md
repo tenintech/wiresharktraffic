@@ -18,18 +18,10 @@ The goal is to test connectivity and observe how different network ports and pro
   
   - Wireshark Network Analyzer
 
-##  1: Connect to the Virtual Machine and Install Wireshark
+##  1. Connect to the Virtual Machine and Install Wireshark
 
 Used Remote Desktop Connection to connect to Windows VM.
-Log in using administrator credentials.
 
-Admin 10
-
-<img width="743" height="460" alt="Screenshot 2026-04-01 232424" src="https://github.com/user-attachments/assets/c457c4c5-a812-423e-ab6d-450c9463d89a" />
-
-Remote Desktop connected to the Azure VM.
-
-## 2: Install Wireshark
 Inside the VM I downloaded Wireshark Network Analyzer from the website (wireshark.org)
 
 Ran Installer using default installation settings. 
@@ -37,10 +29,10 @@ Ran Installer using default installation settings.
 <img width="902" height="478" alt="Screenshot 2026-04-01 233018" src="https://github.com/user-attachments/assets/1e339cc9-b10f-45a6-ab2e-1eabef8c80c9" />
 <img width="374" height="283" alt="Screenshot 2026-04-01 233421" src="https://github.com/user-attachments/assets/b3943a83-dc9c-478d-b65c-b7245f7a85ef" />
 
-
 Wireshark successfully installed.
 
-## 3: Start Capturing Network Traffic 
+
+## 2. Start Capturing Network Traffic 
 1.Within Wireshark I first located the active network adapter (Ethernet)
 
 2. Double-clicked the adapter to begin capturing packets.
@@ -52,7 +44,7 @@ Live capture in progress.
 
 
 
-## - Analyze Web Traffic (HTTPS)
+## 3.Analyze Web Traffic (HTTPS)
 
 Generate web traffic to analyze encrypted connections.
 
@@ -69,7 +61,7 @@ Googles DNS 8.8.8.8 was visible in the capture.
 
 Filtered HTTPS traffic.
 
-## - Analyze Remote Desktop Traffic
+## 4. Analyze Remote Desktop Traffic
 
 Since the VM is accessed through Remote Desktop, I know use Wireshark to observe RDP communication.
 
@@ -82,19 +74,39 @@ This displays traffic used for Remote Desktop connections. My public IP address 
 
 RDP packets in Wireshark.
 
-## - Test Connectivity Using Ping
-Open Command Prompt inside the VM.
+  ## 5.Test Connectivity Using Ping
+
+Applied this filter in Wireshark:
+**icmp**
+
+Opened Windows Powershell inside the VM.
+
+Run command ping to verify Internet Control Message Protocol (ICMP) traffic 
+
 Run the following command:
-ping google.com
-Return to Wireshark.
-Apply the filter:
-icmp
+   ping 10.0.0.5(private IP address of 2nd VM on network)
 
-This shows ICMP packets used in the ping request and reply process.
+<img width="901" height="437" alt="icmptraffic" src="https://github.com/user-attachments/assets/62542d45-7989-4394-8498-70088e6118d6" />
 
-Screenshot to include:
-ICMP traffic displayed in Wireshark.
+This shows the ping request and reply process of the ICMP packets. 
 
+## 6. Configure a Firewall to disturb traffic 
+
+Within the Ubuntu VM opened the Network Security Group and added a rule to disable incoming (inbound) ICMP traffic.
+
+Virtual Machine --> Network Settings --> Rules(Network Security Group) --> 
+Create Inbound Security Rule --> Deny ICMPv4 --> Make priority --> Click Add
+
+<img width="862" height="398" alt="denyicmptraffic" src="https://github.com/user-attachments/assets/06289c46-277d-46c0-b93d-8337265baacb" />
+
+Return to Wireshark and observe traffic. Observed only requests with no reply indicating that the rule was deployed successfully. 
+<img width="667" height="268" alt="requestnoreply" src="https://github.com/user-attachments/assets/63ac5131-17aa-4e76-b220-a0a6a8d4f06d" />
+
+Delete Rule and observe traffic again. 
+<img width="519" height="169" alt="deleterule" src="https://github.com/user-attachments/assets/94433d3d-5843-49f7-8232-7fdbe3e02cf6" />
+<img width="634" height="173" alt="requestreplyping" src="https://github.com/user-attachments/assets/a418cf7e-30cc-4d7b-a30a-8679cf8c4ffb" />
+
+Once ICMP is allowed again the ping request and replies are visible.
 ### Lab Results
 
 In this lab I successfully:
