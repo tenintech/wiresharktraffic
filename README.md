@@ -18,37 +18,34 @@ Verify connectivity using multiple network tests
 
 
 ## Step 1: Connect to the Virtual Machine
-Sign in to the Azure Portal.
-Open your Virtual Machine.
-Click Connect → RDP.
-Download the Remote Desktop file.
+
+Use Remote Desktop Connection to connect to Windows VM.
 Log in using your administrator credentials.
 
-This allows you to work directly inside the cloud VM.
+Admin 10
 
-Screenshot to include:
+
 Remote Desktop connected to the Azure VM.
 
 ## Step 2: Install Wireshark
-Open a browser inside the VM.
-Navigate to the Wireshark website.
-Download the latest stable version.
-Run the installer.
-Use default installation settings.
+Inside the VM I downloaded Wireshark Network Analyzer from the website (wireshark.org)
 
-After installation, launch Wireshark.
+Ran Installer using default installation settings. 
 
-Screenshot to include:
+<img width="902" height="478" alt="Screenshot 2026-04-01 233018" src="https://github.com/user-attachments/assets/1e339cc9-b10f-45a6-ab2e-1eabef8c80c9" />
+<img width="374" height="283" alt="Screenshot 2026-04-01 233421" src="https://github.com/user-attachments/assets/b3943a83-dc9c-478d-b65c-b7245f7a85ef" />
+
+
 Wireshark successfully installed.
 
 ## Step 3: Start Capturing Network Traffic
-Open Wireshark.
-Locate the active network adapter (usually Ethernet).
-Double-click the adapter to begin capturing packets.
+1.Within Wireshark I first located the active network adapter (Ethernet)
 
-You should now see live network activity.
+2. Double-clicked the adapter to begin capturing packets.
 
-Screenshot to include:
+Live capture in progress. 
+<img width="894" height="443" alt="live capture" src="https://github.com/user-attachments/assets/540e31de-08d2-42fc-b94e-47e2e79e925a" />
+
 Packet capture running.
 
 ## Step 4: Analyze Web Traffic (HTTPS)
