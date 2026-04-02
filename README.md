@@ -7,27 +7,28 @@ This lab is part of my hands-on IT support and cloud infrastructure training por
 This lab demonstrates how to capture and analyze network traffic using Wireshark.
 The goal is to test connectivity and observe how different network ports and protocols operate in a cloud-hosted virtual machine environment.
 
-This activity simulates basic network troubleshooting tasks commonly performed by IT support and help desk technicians.
+<h2>Technologies/Environments Used</h2>
+  
+  - Microsoft Azure(Virtual Machines)
+ 
+       - Windows 10 Enterprise Version 22H2 x64 Gen 2 (Client Machine)
+  
+  - Remote Desktop (RDP)
+  
+  - Wireshark Network Analyzer
 
-### Lab Objectives
+##  1: Connect to the Virtual Machine and Install Wireshark
 
-Install Wireshark on a virtual machine
-Capture live network traffic
-Filter traffic by protocol and port
-Verify connectivity using multiple network tests
-
-
-## Step 1: Connect to the Virtual Machine
-
-Use Remote Desktop Connection to connect to Windows VM.
-Log in using your administrator credentials.
+Used Remote Desktop Connection to connect to Windows VM.
+Log in using administrator credentials.
 
 Admin 10
 
+<img width="743" height="460" alt="Screenshot 2026-04-01 232424" src="https://github.com/user-attachments/assets/c457c4c5-a812-423e-ab6d-450c9463d89a" />
 
 Remote Desktop connected to the Azure VM.
 
-## Step 2: Install Wireshark
+## 2: Install Wireshark
 Inside the VM I downloaded Wireshark Network Analyzer from the website (wireshark.org)
 
 Ran Installer using default installation settings. 
@@ -38,46 +39,49 @@ Ran Installer using default installation settings.
 
 Wireshark successfully installed.
 
-## Step 3: Start Capturing Network Traffic
+## 3: Start Capturing Network Traffic 
 1.Within Wireshark I first located the active network adapter (Ethernet)
 
 2. Double-clicked the adapter to begin capturing packets.
 
+Packet capture running. All traffic with no filter
+
 Live capture in progress. 
 <img width="894" height="443" alt="live capture" src="https://github.com/user-attachments/assets/540e31de-08d2-42fc-b94e-47e2e79e925a" />
 
-Packet capture running.
 
-## Step 4: Analyze Web Traffic (HTTPS)
+
+## - Analyze Web Traffic (HTTPS)
 
 Generate web traffic to analyze encrypted connections.
 
-Open a web browser.
-Visit a website such as:
-example.com
-Return to Wireshark.
-Apply the following display filter:
-tcp.port == 443
+I opened Microsoft Edge and visited google.com 
 
-This shows HTTPS traffic between your VM and the website.
+I return to Wireshark and applied the display filter:
 
-Screenshot to include:
+ **tcp.port == 443**
+
+This shows HTTPS traffic between the VM and the website.
+Googles DNS 8.8.8.8 was visible in the capture.
+<img width="905" height="484" alt="filterportcapture443" src="https://github.com/user-attachments/assets/bc03c151-08bd-4b50-8840-9abc200090a0" />
+
+
 Filtered HTTPS traffic.
 
-## Step 5: Analyze Remote Desktop Traffic
+## - Analyze Remote Desktop Traffic
 
-Since the VM is accessed through Remote Desktop, we can observe RDP communication.
+Since the VM is accessed through Remote Desktop, I know use Wireshark to observe RDP communication.
 
 Apply this filter in Wireshark:
 
-tcp.port == 3389
+**tcp.port == 3389**
 
-This displays traffic used for Remote Desktop connections.
+This displays traffic used for Remote Desktop connections. My public IP address is visible in the capture.
+<img width="940" height="479" alt="filter3389" src="https://github.com/user-attachments/assets/709af4af-1005-44a1-ae92-86931480784e" />
 
-Screenshot to include:
 RDP packets in Wireshark.
 
-## Step 6: Test Connectivity Using Ping
+## - Test Connectivity Using Ping
 Open Command Prompt inside the VM.
 Run the following command:
 ping google.com
@@ -111,19 +115,7 @@ Tools Used
 Wireshark
 Microsoft Azure Virtual Machine
 Remote Desktop Protocol (RDP)
-<h2>Technologies/Environments Used</h2>
-  
-  - Microsoft Azure(Virtual Machines, Virtual Network)
-    
-       - Windows Server 2025 (Domain Controller)
- 
-       - Windows 10 Enterprise Version 22H2 x64 Gen 2 (Client Machine)
-  
-  - Active Directory Domain Services (AD DS)
-  
-  - Remote Desktop (RDP)
-  
-  - PowerShell
+
   
 
 
@@ -142,4 +134,4 @@ Remote Desktop Protocol (RDP)
 <h2>⏭️Next Steps</h2>
 
 In the next phase of this lab I'll:
-# wiresharktraffic
+
