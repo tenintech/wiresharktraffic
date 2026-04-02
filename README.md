@@ -146,7 +146,4 @@ Observing traffic in this project of network traffic analysis helped me better u
 
 
 
-<h2>⏭️Next Steps</h2>
-
-In the next phase of this lab I'll:
 
