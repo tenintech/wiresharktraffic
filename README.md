@@ -11,7 +11,8 @@ The goal is to test connectivity and observe how different network ports and pro
   
   - Microsoft Azure(Virtual Machines)
  
-       - Windows 10 Enterprise Version 22H2 x64 Gen 2 (Client Machine)
+       - Windows 10 Enterprise Version 22H2 x64 Gen 2 
+       - Linux (ubuntu 24.04) 
   
   - Remote Desktop (RDP)
   
